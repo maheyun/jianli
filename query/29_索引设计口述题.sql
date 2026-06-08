@@ -1,0 +1,21 @@
+-- 第 29 题 ★★★  索引与性能
+-- 场景: 高频查询某用户某时间段的下单记录
+--   SELECT * FROM orders
+--   WHERE user_id = 'U12345'
+--     AND create_time >= '2025-10-01'
+--   ORDER BY create_time DESC
+--   LIMIT 20;
+--
+-- Q1: 建什么索引？
+-- A1: 联合索引 (user_id, create_time)
+--     user_id 等值过滤放最左，create_time 范围+排序放后面
+--
+-- Q2: 为什么不是 (create_time, user_id)？
+-- A2: create_time 在前，范围查询后 user_id 无法用索引排序
+--     最左前缀原则: 等值列在前、范围列在后
+--
+-- Q3: 能用到覆盖索引吗？
+-- A3: SELECT * 不能。改为 SELECT user_id, create_time 则只用索引不回表
+--
+-- 建索引语句:
+-- CREATE INDEX idx_uid_ctime ON orders(user_id, create_time);
