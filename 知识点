@@ -3,3 +3,6 @@ reset_index()函数中，参数name只对series类型的数据列进行重命名
 使用pivot_table函数的时候，关于数据统计的时候，aggfunc参数的使用，使用size和count的区别
 size就是统计行数，不会跳过nan值
 如果是count的时候，会跳过nan值，是对列的非空值进行统计，一般需要values参数指定哪个列用于计数
+
+python中query相当于myslq的having
+select相当于mysql中的case when
