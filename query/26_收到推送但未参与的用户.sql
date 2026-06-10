@@ -4,7 +4,7 @@
 --       EXISTS 找到第一条就停止扫描，效率高
 
 SELECT u.user_id, u.registration_date
-FROM users u
+FROM users_p2 u
 WHERE EXISTS (
     SELECT 1 FROM user_activities a
     WHERE a.user_id = u.user_id

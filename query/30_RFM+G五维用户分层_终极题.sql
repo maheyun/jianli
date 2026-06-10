@@ -11,11 +11,11 @@ WITH user_order_stats AS (
            COUNT(DISTINCT o.order_id)           AS frequency,
            COALESCE(SUM(o.amount), 0)           AS monetary,
            COUNT(DISTINCT p.category_id)        AS category_diversity
-    FROM users u
-    LEFT JOIN orders o ON u.user_id = o.user_id
+    FROM users_p2 u
+    LEFT JOIN orders_p2 o ON u.user_id = o.user_id
         AND o.order_status IN ('paid', 'shipped', 'completed')
-    LEFT JOIN order_items oi ON o.order_id = oi.order_id
-    LEFT JOIN products p ON oi.product_id = p.product_id
+    LEFT JOIN order_items_p2 oi ON o.order_id = oi.order_id
+    LEFT JOIN products_p2 p ON oi.product_id = p.product_id
     GROUP BY u.user_id
 ),
 scored AS (

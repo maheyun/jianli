@@ -6,7 +6,7 @@ SELECT u.user_id,
        u.registration_date,
        CASE WHEN a.user_id IS NOT NULL
             THEN '参与过活动' ELSE '未参与' END AS activity_status
-FROM users u
+FROM users_p2 u
 LEFT JOIN (SELECT DISTINCT user_id FROM user_activities) a
     ON u.user_id = a.user_id
 ORDER BY u.registration_date;

@@ -6,3 +6,6 @@ size就是统计行数，不会跳过nan值
 
 python中query相当于myslq的having
 select相当于mysql中的case when
+
+所以，即便设置了b_tree这样的物理索引，也可以使用like进行扫描，但前提是必须是前缀索引，
+如果是全模糊，类似“%%”这样的就要设置全文索引（fulltext）这样的，同时搜索语句也不是like了，使用的是MATCH ... AGAINST

@@ -13,7 +13,7 @@ SELECT p.product_id,
                + COALESCE(i.current_stock, 0), 0),
            4
        ) AS sell_through_rate
-FROM products p
+FROM products_p4 p
 LEFT JOIN inventory_data i ON p.product_id = i.product_id
 LEFT JOIN (
     SELECT product_id,

@@ -1,11 +1,33 @@
 # ============================================
 # 每天早上：把 GitHub 上的代码拉到本地
 # ============================================
-git pull origin main
+git pull
 
 # ============================================
 # 每天晚上：把本地代码推到 GitHub
 # ============================================
 git add .
 git commit -m "日常更新"
-git push origin main
+git push
+
+# ============================================
+# 首次上传：将一个项目上传到 GitHub 整体流程
+# ============================================
+
+# 1. 进入项目目录
+cd 你的项目文件夹
+
+# 2. 初始化 git（让这个文件夹变成 git 项目）
+git init
+
+# 3. 暂存所有文件（把所有文件标记为"准备提交"）
+git add .
+
+# 4. 第一次提交（真正保存到本地仓库）
+git commit -m "首次提交"
+
+# 5. 关联 GitHub 远程仓库（告诉 git，GitHub 地址是什么）
+git remote add origin https://github.com/你的用户名/仓库名.git
+git remote add origin https://github.com/maheyun/dianwei_qingxi.git
+# 6. 推送到 GitHub（-u 关联一次，以后直接 git push 就行）
+git push -u origin main

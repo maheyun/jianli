@@ -1,8 +1,8 @@
 -- ═══════════════════════════════════════════════════════════════
 --  MySQL 面试题 30 道（覆盖全部四个项目的所有表）
---  涵盖: user_behavior / orders / users / order_items / products
---        user_activities / ad_campaigns / attribution_data
---        sales_data / inventory_data
+--  涵盖: user_behavior / orders / orders_p2 / user_activities
+--        users_p2 / order_items_p2 / products_p2 / products_p4
+--        ad_campaigns / attribution_data / sales_data / inventory_data
 --
 --  使用方式: 选中任意一道题的 SQL，在 MySQL 客户端中直接执行
 --  难度标注: ★ 基础  ★★ 中等  ★★★ 进阶
@@ -15,12 +15,22 @@
 
 -- ── 第 1 题 ★  DISTINCT 去重
 -- 查询 user_behavior 表中所有不重复的 action 类型。
+select distinct ACTION
+from user_behavior;
+
 SELECT DISTINCT action
 FROM user_behavior;
 
 
 -- ── 第 2 题 ★  WHERE → ORDER BY → LIMIT
 -- 查询已取消的订单，按金额降序排列，取前 10 条。
+select *
+from orders 
+where order_status = 'cancelled'
+order by amount DESC
+limit 10;
+
+
 SELECT order_id, user_id, amount, create_time
 FROM orders
 WHERE order_status = 'cancelled'
@@ -29,12 +39,21 @@ LIMIT 10;
 
 
 -- ── 第 3 题 ★  GROUP BY + COUNT(*) + 排序
--- 统计 users 表中每种性别（gender）的用户数，按人数降序排列。
-SELECT gender,
-       COUNT(*) AS user_count
-FROM users
-GROUP BY gender
-ORDER BY user_count DESC;
+-- 统计 users_p2 表中每种性别（gender）的用户数，按人数降序排列。
+select gender, count(gender) con
+from users_p2
+group by gender
+order by con DESC;
+
+
+
+
+
+-- SELECT gender,
+--        COUNT(*) AS user_count
+-- FROM users_p2
+-- GROUP BY gender
+-- ORDER BY user_count DESC;
 
 
 -- ── 第 4 题 ★  BETWEEN...AND... 闭区间
@@ -45,19 +64,19 @@ WHERE spend BETWEEN 5000 AND 20000;
 
 
 -- ── 第 5 题 ★  LIKE 模糊匹配
--- 查询 products 表中 product_name 包含"袜子"的所有产品。
--- 追问: LIKE '%袜子%' 能否用到索引？答: 不能，前缀模糊才能走索引。
+-- 查询 products_p2 表中 product_name 包含"袜"的所有产品。
+-- 追问: LIKE '%袜%' 能否用到索引？答: 不能，前缀模糊才能走索引。
 SELECT product_id, product_name, category_id
-FROM products
-WHERE product_name LIKE '%袜子%';
+FROM products_p2
+WHERE product_name LIKE '%袜%';
 
 
 -- ── 第 6 题 ★  IN 多值匹配
--- 查询在有库存（current_stock > 0）且类型为"袜子"或"服装"的产品。
+-- 查询在有库存（current_stock > 0）且类型为"运动袜"或"运动T恤"的产品。
 -- 考点: IN 比多个 OR 更简洁，MySQL 内部会对 IN 列表排序后二分查找。
 SELECT product_id, product_name, current_stock
 FROM inventory_data
-JOIN products USING (product_id)
+JOIN products_p4 USING (product_id)
 WHERE current_stock > 0
   AND category_id IN (1, 2);
 
@@ -154,7 +173,7 @@ SELECT u.user_id,
        u.registration_date,
        CASE WHEN a.user_id IS NOT NULL
             THEN '参与过活动' ELSE '未参与' END AS activity_status
-FROM users u
+FROM users_p2 u
 LEFT JOIN (SELECT DISTINCT user_id FROM user_activities) a
     ON u.user_id = a.user_id
 ORDER BY u.registration_date;
@@ -182,10 +201,10 @@ SELECT u.user_id,
        oi.quantity,
        oi.price,
        (oi.quantity * oi.price) AS line_total
-FROM users u
-JOIN orders o        ON u.user_id = o.user_id
-JOIN order_items oi  ON o.order_id = oi.order_id
-JOIN products p      ON oi.product_id = p.product_id
+FROM users_p2 u
+JOIN orders_p2 o        ON u.user_id = o.user_id
+JOIN order_items_p2 oi  ON o.order_id = oi.order_id
+JOIN products_p2 p      ON oi.product_id = p.product_id
 WHERE o.order_status IN ('paid', 'shipped', 'completed')
 ORDER BY u.user_id, o.create_time
 LIMIT 50;
@@ -227,7 +246,7 @@ SELECT p.product_id,
        ROUND(COALESCE(s.total_volume, 0)
         / NULLIF(COALESCE(s.total_volume, 0)
             + COALESCE(i.current_stock, 0), 0), 4) AS sell_through_rate
-FROM products p
+FROM products_p4 p
 LEFT JOIN inventory_data i  ON p.product_id = i.product_id
 LEFT JOIN (
     SELECT product_id,
@@ -288,10 +307,10 @@ WITH user_category AS (
     SELECT u.user_id,
            p.category_id,
            SUM(oi.quantity * oi.price) AS category_amount
-    FROM users u
-    JOIN orders o         ON u.user_id = o.user_id
-    JOIN order_items oi   ON o.order_id = oi.order_id
-    JOIN products p       ON oi.product_id = p.product_id
+    FROM users_p2 u
+    JOIN orders_p2 o         ON u.user_id = o.user_id
+    JOIN order_items_p2 oi   ON o.order_id = oi.order_id
+    JOIN products_p2 p       ON oi.product_id = p.product_id
     WHERE o.order_status IN ('paid', 'shipped', 'completed')
     GROUP BY u.user_id, p.category_id
 )
@@ -338,7 +357,7 @@ ORDER BY amount DESC;
 -- 查询有活动推送但从未参与的用户。
 -- NOT EXISTS 不会因子查询 NULL 而返回空结果，比 NOT IN 安全。
 SELECT u.user_id, u.registration_date
-FROM users u
+FROM users_p2 u
 WHERE EXISTS (
     SELECT 1 FROM user_activities a
     WHERE a.user_id = u.user_id
@@ -447,11 +466,11 @@ WITH user_order_stats AS (
            COALESCE(SUM(o.amount), 0)                     AS monetary,
            -- G: 品类多样性
            COUNT(DISTINCT p.category_id)                  AS category_diversity
-    FROM users u
-    LEFT JOIN orders o       ON u.user_id = o.user_id
+    FROM users_p2 u
+    LEFT JOIN orders_p2 o       ON u.user_id = o.user_id
         AND o.order_status IN ('paid', 'shipped', 'completed')
-    LEFT JOIN order_items oi ON o.order_id = oi.order_id
-    LEFT JOIN products p     ON oi.product_id = p.product_id
+    LEFT JOIN order_items_p2 oi ON o.order_id = oi.order_id
+    LEFT JOIN products_p2 p     ON oi.product_id = p.product_id
     GROUP BY u.user_id, u.registration_date
 ),
 scored AS (
@@ -497,34 +516,34 @@ ORDER BY AVG(rfm_total) DESC;
 --   ──────────────────────────────────────
 --    1      user_behavior
 --    2      orders（项目一）
---    3      users
+--    3      users_p2
 --    4      ad_campaigns
---    5      products
---    6      inventory_data + products
+--    5      products_p2
+--    6      inventory_data + products_p4
 --    7      user_behavior
 --    8      user_behavior
 --    9      ad_campaigns
 --   10      orders
 --   11      orders
 --   12      user_behavior
---   13      users + user_activities
+--   13      users_p2 + user_activities
 --   14      orders
---   15      users + orders + order_items + products（四表 JOIN）
+--   15      users_p2 + orders_p2 + order_items_p2 + products_p2（四表 JOIN）
 --   16      user_behavior + orders
 --   17      user_behavior + orders（聚合后关联）
---   18      products + inventory_data + sales_data（三表）
+--   18      products_p4 + inventory_data + sales_data（三表）
 --   19      orders
 --   20      orders
 --   21      orders
 --   22      orders
---   23      users + orders + order_items + products + 品类分析
+--   23      users_p2 + orders_p2 + order_items_p2 + products_p2 + 品类分析
 --   24      sales_data（移动平均）
 --   25      orders
---   26      users + user_activities（NOT EXISTS）
+--   26      users_p2 + user_activities（NOT EXISTS）
 --   27      orders（CTE + ROW_NUMBER）
 --   28      ad_campaigns（CTE + 平台效能）
 --   29      口述题: orders 索引设计
---   30      users+orders+order_items+products（RFM+G 五表）
+--   30      users_p2+orders_p2+order_items_p2+products_p2（RFM+G 五表）
 --
 -- ═══════════════════════════════════════════════════════════════
 --  高频 TOP 5（面试最常考）

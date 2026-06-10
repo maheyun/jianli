@@ -3,6 +3,6 @@
 -- 考点: GROUP BY + COUNT + ORDER BY 聚合结果
 
 SELECT gender, COUNT(*) AS user_count
-FROM users
+FROM users_p2
 GROUP BY gender
 ORDER BY user_count DESC;
