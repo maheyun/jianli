@@ -1,0 +1,289 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - generic [ref=e6]:
+        - button "Plotly Cloud" [ref=e7] [cursor=pointer]:
+          - img [ref=e8]
+          - text: Plotly Cloud
+        - button "Errors" [ref=e10] [cursor=pointer]:
+          - img [ref=e11]
+          - text: Errors
+        - button "Callbacks" [ref=e13] [cursor=pointer]:
+          - img [ref=e14]
+          - text: Callbacks
+        - generic [ref=e18]: v4.3.0
+        - generic [ref=e20]:
+          - text: Server
+          - img [ref=e21]
+      - button [ref=e24] [cursor=pointer]:
+        - img [ref=e25]
+    - generic [ref=e28]:
+      - generic [ref=e29]:
+        - heading "🏀 跃动体育 · 数据看板" [level=1] [ref=e30]
+        - generic [ref=e31]:
+          - text: "最后刷新: 2026-06-21 18:02 |"
+          - link "🔄 刷新数据" [ref=e32] [cursor=pointer]:
+            - /url: /
+      - generic [ref=e34]:
+        - generic [ref=e35] [cursor=pointer]: 📊 项目一：日常运营
+        - generic [ref=e36] [cursor=pointer]: 👥 项目二：老用户健康
+        - generic [ref=e37] [cursor=pointer]: 💰 项目三：投放 ROI
+        - generic [ref=e38] [cursor=pointer]: 📦 项目四：产品健康度
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - generic [ref=e42]:
+            - generic [ref=e43]: 📊 总 PV
+            - generic [ref=e44]: 2,532,771
+          - generic [ref=e45]:
+            - generic [ref=e46]: 👤 总 UV
+            - generic [ref=e47]: 16,155
+          - generic [ref=e48]:
+            - generic [ref=e49]: 💳 付费用户
+            - generic [ref=e50]: 11,585
+          - generic [ref=e51]:
+            - generic [ref=e52]: 💰 GMV
+            - generic [ref=e53]: ¥20,432,542
+          - generic [ref=e54]:
+            - generic [ref=e55]: 📈 付费率
+            - generic [ref=e56]: 72%
+          - generic [ref=e57]:
+            - generic [ref=e58]: 🛒 客单价
+            - generic [ref=e59]: ¥202
+        - generic [ref=e64]:
+          - img:
+            - generic:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic: Dec 72025
+                  - generic:
+                    - generic: Dec 14
+                  - generic:
+                    - generic: Dec 21
+                  - generic:
+                    - generic: Dec 28
+                - generic:
+                  - generic:
+                    - generic: 2k
+                  - generic:
+                    - generic: 4k
+                  - generic:
+                    - generic: 6k
+                  - generic:
+                    - generic: 8k
+                  - generic:
+                    - generic: 10k
+                  - generic:
+                    - generic: 12k
+                  - generic:
+                    - generic: 14k
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: 30k
+                    - generic:
+                      - generic: 40k
+                    - generic:
+                      - generic: 50k
+                    - generic:
+                      - generic: 60k
+                    - generic:
+                      - generic: 70k
+                    - generic:
+                      - generic: 80k
+                    - generic:
+                      - generic: 90k
+                    - generic:
+                      - generic: 100k
+                    - generic:
+                      - generic: 110k
+                    - generic:
+                      - generic: 120k
+          - img:
+            - generic:
+              - generic [ref=e85]:
+                - generic [ref=e87]: PV
+                - generic [ref=e94]: UV
+                - generic [ref=e101]: GMV (元)
+              - generic:
+                - generic: 近 30 天 PV / UV / GMV 趋势
+              - generic:
+                - generic: 用户数
+              - generic:
+                - generic: GMV (元)
+          - toolbar [ref=e107]:
+            - button "Download plot as a PNG" [ref=e109] [cursor=pointer]:
+              - img [ref=e110]
+            - generic [ref=e112]:
+              - button "Zoom" [ref=e113] [cursor=pointer]:
+                - img [ref=e114]
+              - button "Pan" [ref=e116] [cursor=pointer]:
+                - img [ref=e117]
+              - button "Box Select" [ref=e119] [cursor=pointer]:
+                - img [ref=e120]
+              - button "Lasso Select" [ref=e122] [cursor=pointer]:
+                - img [ref=e123]
+            - generic [ref=e125]:
+              - button "Zoom in" [ref=e126] [cursor=pointer]:
+                - img [ref=e127]
+              - button "Zoom out" [ref=e129] [cursor=pointer]:
+                - img [ref=e130]
+              - button "Autoscale" [ref=e132] [cursor=pointer]:
+                - img [ref=e133]
+              - button "Reset axes" [ref=e135] [cursor=pointer]:
+                - img [ref=e136]
+          - img
+        - generic [ref=e138]:
+          - generic [ref=e143]:
+            - img:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic:
+                        - generic:
+                          - generic:
+                            - generic:
+                              - generic: 16,155100%
+                            - generic:
+                              - generic: 13,98287%
+                            - generic:
+                              - generic: 12,10375%
+                            - generic:
+                              - generic: 11,58572%
+                  - generic:
+                    - generic:
+                      - generic: 支付
+                    - generic:
+                      - generic: 下单
+                    - generic:
+                      - generic: 加购
+                    - generic:
+                      - generic: 浏览
+            - img:
+              - generic:
+                - generic:
+                  - generic: 转化漏斗
+            - toolbar [ref=e157]:
+              - button "Download plot as a PNG" [ref=e159] [cursor=pointer]:
+                - img [ref=e160]
+              - generic [ref=e162]:
+                - button "Zoom" [ref=e163] [cursor=pointer]:
+                  - img [ref=e164]
+                - button "Pan" [ref=e166] [cursor=pointer]:
+                  - img [ref=e167]
+                - button "Box Select" [ref=e169] [cursor=pointer]:
+                  - img [ref=e170]
+                - button "Lasso Select" [ref=e172] [cursor=pointer]:
+                  - img [ref=e173]
+              - generic [ref=e175]:
+                - button "Zoom in" [ref=e176] [cursor=pointer]:
+                  - img [ref=e177]
+                - button "Zoom out" [ref=e179] [cursor=pointer]:
+                  - img [ref=e180]
+                - button "Autoscale" [ref=e182] [cursor=pointer]:
+                  - img [ref=e183]
+                - button "Reset axes" [ref=e185] [cursor=pointer]:
+                  - img [ref=e186]
+            - img
+          - generic [ref=e192]:
+            - img:
+              - generic:
+                - generic:
+                  - generic:
+                    - generic:
+                      - generic: 高价值客户30.1%
+                  - generic:
+                    - generic:
+                      - generic: 中高价值客户24.3%
+                  - generic:
+                    - generic:
+                      - generic: 低价值客户23.5%
+                  - generic:
+                    - generic:
+                      - generic: 中价值客户22.2%
+            - img:
+              - generic:
+                - generic [ref=e200]:
+                  - generic [ref=e202]: 高价值客户
+                  - generic [ref=e209]: 中高价值客户
+                  - generic [ref=e216]: 低价值客户
+                  - generic [ref=e223]: 中价值客户
+                - generic:
+                  - generic: 客户分层占比
+            - toolbar [ref=e229]:
+              - button "Download plot as a PNG" [ref=e231] [cursor=pointer]:
+                - img [ref=e232]
+            - img
+        - generic [ref=e234]:
+          - strong [ref=e235]: 环节转化率：
+          - text: "浏览→加购: 86.5% | 加购→下单: 86.6% | 下单→支付: 95.7%"
+        - generic [ref=e236]:
+          - heading "近 7 天日报明细" [level=4] [ref=e237]
+          - generic [ref=e242]:
+            - table:
+              - rowgroup:
+                - row "日期 PV UV GMV 付费率 客单价":
+                  - columnheader "日期" [ref=e243]:
+                    - generic [ref=e245]: 日期
+                  - columnheader "PV" [ref=e246]:
+                    - generic [ref=e248]: PV
+                  - columnheader "UV" [ref=e249]:
+                    - generic [ref=e251]: UV
+                  - columnheader "GMV" [ref=e252]:
+                    - generic [ref=e254]: GMV
+                  - columnheader "付费率" [ref=e255]:
+                    - generic [ref=e257]: 付费率
+                  - columnheader "客单价" [ref=e258]:
+                    - generic [ref=e260]: 客单价
+                - row "2025-12-31 7564 3251 60195 8.7% 199.3":
+                  - cell "2025-12-31" [ref=e261]
+                  - cell "7564" [ref=e262]
+                  - cell "3251" [ref=e263]
+                  - cell "60195" [ref=e264]
+                  - cell "8.7%" [ref=e265]
+                  - cell "199.3" [ref=e266]
+                - row "2025-12-30 7626 3321 64152 8.5% 218.9":
+                  - cell "2025-12-30" [ref=e267]
+                  - cell "7626" [ref=e268]
+                  - cell "3321" [ref=e269]
+                  - cell "64152" [ref=e270]
+                  - cell "8.5%" [ref=e271]
+                  - cell "218.9" [ref=e272]
+                - row "2025-12-29 6881 2932 51619 8.6% 187":
+                  - cell "2025-12-29" [ref=e273]
+                  - cell "6881" [ref=e274]
+                  - cell "2932" [ref=e275]
+                  - cell "51619" [ref=e276]
+                  - cell "8.6%" [ref=e277]
+                  - cell "187" [ref=e278]
+                - row "2025-12-28 4924 2101 43194 9.4% 209.7":
+                  - cell "2025-12-28" [ref=e279]
+                  - cell "4924" [ref=e280]
+                  - cell "2101" [ref=e281]
+                  - cell "43194" [ref=e282]
+                  - cell "9.4%" [ref=e283]
+                  - cell "209.7" [ref=e284]
+                - row "2025-12-27 4904 2150 40322 8.6% 207.8":
+                  - cell "2025-12-27" [ref=e285]
+                  - cell "4904" [ref=e286]
+                  - cell "2150" [ref=e287]
+                  - cell "40322" [ref=e288]
+                  - cell "8.6%" [ref=e289]
+                  - cell "207.8" [ref=e290]
+                - row "2025-12-26 6946 3001 60028 8.9% 213.6":
+                  - cell "2025-12-26" [ref=e291]
+                  - cell "6946" [ref=e292]
+                  - cell "3001" [ref=e293]
+                  - cell "60028" [ref=e294]
+                  - cell "8.9%" [ref=e295]
+                  - cell "213.6" [ref=e296]
+                - row "2025-12-25 5508 2403 37643 7.6% 195":
+                  - cell "2025-12-25" [ref=e297]
+                  - cell "5508" [ref=e298]
+                  - cell "2403" [ref=e299]
+                  - cell "37643" [ref=e300]
+                  - cell "7.6%" [ref=e301]
+                  - cell "195" [ref=e302]
+  - contentinfo
+  - img [ref=e303]

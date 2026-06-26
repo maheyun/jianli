@@ -4,3 +4,4 @@
 
 SELECT DISTINCT action
 FROM user_behavior;
+

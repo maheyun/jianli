@@ -1,0 +1,12 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - heading "🏀 跃动体育 · 数据看板" [level=1] [ref=e5]
+    - generic [ref=e6]:
+      - text: "最后刷新: 2026-06-21 18:13 |"
+      - link "🔄 刷新数据" [ref=e7] [cursor=pointer]:
+        - /url: /
+  - generic [ref=e9]:
+    - generic [ref=e10] [cursor=pointer]: 📊 项目一：日常运营
+    - generic [ref=e11] [cursor=pointer]: 👥 项目二：老用户健康
+    - generic [ref=e12] [cursor=pointer]: 💰 项目三：投放 ROI
+    - generic [ref=e13] [cursor=pointer]: 📦 项目四：产品健康度
