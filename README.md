@@ -1,12 +1,13 @@
-# 🏪 电商数据分析 portfolio
+# 🏪 跃动体育 · 电商数据分析 Portfolio
 
-> **跃动体育** 电商运营数据分析项目集，涵盖流量分析、用户分层、ROI 优化、产品组合管理四大核心场景。
+> 模拟 100 人 DTC 运动品牌「跃动体育」的全链路数据分析实践，涵盖**流量运营、用户分层、ROI 优化、产品组合**四大核心场景。
 
 [![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)](https://www.python.org/)
 [![Jupyter](https://img.shields.io/badge/Jupyter-Notebook-orange.svg)](https://jupyter.org/)
 [![MySQL](https://img.shields.io/badge/MySQL-8.0+-4479A1.svg?logo=mysql&logoColor=white)](https://www.mysql.com/)
 [![SQLite](https://img.shields.io/badge/SQLite-3-blue.svg?logo=sqlite&logoColor=white)](https://www.sqlite.org/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Dash](https://img.shields.io/badge/Dash-Plotly-3F4F75.svg?logo=plotly&logoColor=white)](https://dash.plotly.com/)
+[![Power BI](https://img.shields.io/badge/Power_BI-Desktop-F2C811.svg?logo=powerbi&logoColor=black)](https://powerbi.microsoft.com/)
 
 ---
 
@@ -33,10 +34,12 @@
 | 流量分析 | 按日聚合 PV / UV，趋势可视化 | 日均 PV/UV 比 ≈ 1.9 |
 | 付费率分析 | 付费用户 / 活跃用户（按日） | 各环节转化追踪 |
 | 复购分析 | 下单 ≥ 2 次的用户画像 | 复购率 ≈ 46% |
-| 转化漏斗 | `pivot_table` 构建用户-行为矩阵 | 浏览→加购→下单→支付 |
-| RFM 分层 | `pd.qcut` 五等分 + `np.select` 向量化 | 高/中高/中/低价值客户 |
+| 转化漏斗 | `pivot_table` 构建用户-行为矩阵 | 浏览 → 加购 → 下单 → 支付 |
+| RFM 分层 | `pd.qcut` 五等分 + `np.select` 向量化 | 高 / 中高 / 中 / 低价值客户 |
 
-📄 [查看 Notebook](项目一：公司日常运营指标分析/analysis.ipynb) · [分析报告](项目一：公司日常运营指标分析/日常运营指标分析报告.md)
+📄 [Notebook](项目一：公司日常运营指标分析/analysis.ipynb) · [分析报告](项目一：公司日常运营指标分析/日常运营指标分析报告.md) · [方案](项目一：公司日常运营指标分析/日常运营指标分析方案.md)
+
+🖼️ [静态看板](可视化/charts/项目一_日常运营指标分析.png)
 
 ---
 
@@ -47,11 +50,13 @@
 | 分析模块 | 方法 | 亮点 |
 |---------|------|------|
 | RFM-G 特征工程 | 五表 JOIN 构建用户宽表，新增品类拓展维度 G | G = 品类多样性 × (1 + 服装金额占比) |
-| 用户分层 | 四维评分（R/F/M/G）+ `np.select` 向量化 | 高价值深耕/高潜唤醒/成长型/流失风险 |
+| 用户分层 | 四维评分（R/F/M/G）+ `np.select` 向量化 | 高价值深耕 / 高潜唤醒 / 成长型 / 流失风险 |
 | AB 测试 | 卡方检验 + 双样本比例 z 检验 | 验证优惠策略的统计显著性 |
 | 运营策略 | 按分层设计差异化方案 | 品类拓展券、阶梯优惠、召回机制 |
 
-📄 [查看 Notebook](项目二：老用户激活与价值提升/analysis.ipynb) · [分析报告](项目二：老用户激活与价值提升/老用户激活与价值提升分析报告.md)
+📄 [Notebook](项目二：老用户激活与价值提升/analysis.ipynb) · [分析报告](项目二：老用户激活与价值提升/老用户激活与价值提升分析报告.md) · [方案](项目二：老用户激活与价值提升/老用户激活与价值提升方案.md)
+
+🖼️ [静态看板](可视化/charts/项目二_老用户激活与价值提升分析.png)
 
 ---
 
@@ -61,13 +66,15 @@
 
 | 分析模块 | 方法 | 亮点 |
 |---------|------|------|
-| 效能指标 | 六大指标：CTR / CVR / CPA / CPC / ROI / ARPU | 得物 ROI 44× vs 抖音 16× |
+| 效能指标 | CTR / CVR / CPA / CPC / ROI / ARPU 六大指标 | 得物 ROI 44× vs 抖音 16× |
 | 四象限定位 | CPC（成本）× ROI（回报）交叉分析 | 高效拉新场 / 高价值种草地 / 低成本引流 |
 | 边际 ROI | 二次多项式回归拟合投入-产出曲线 | 量化边际收益递减拐点 |
 | 归因分析 | 末次点击 + 时间衰减双模型 | 避免单一归因偏差 |
 | 预算优化 | 综合 ROI(60%) + 边际 ROI(40%) 权重分配 | 全域 ROI 预估提升 15%+ |
 
-📄 [查看 Notebook](项目三：各平台ROI预算重新分配/analysis.ipynb) · [分析报告](项目三：各平台ROI预算重新分配/各平台ROI预算重新分配分析报告.md)
+📄 [Notebook](项目三：各平台ROI预算重新分配/analysis.ipynb) · [分析报告](项目三：各平台ROI预算重新分配/各平台ROI预算重新分配分析报告.md) · [方案](项目三：各平台ROI预算重新分配/各平台ROI预算重新分配方案.md)
+
+🖼️ [静态看板](可视化/charts/项目三_各平台ROI预算重新分配分析.png)
 
 ---
 
@@ -77,12 +84,14 @@
 
 | 分析模块 | 方法 | 亮点 |
 |---------|------|------|
-| 健康度评分 | 售罄率 × 毛利率 双维度四象限 | 产品分级：爆款/畅销/一般/滞销 |
-| 趋势预测 | 线性回归拟合日销量趋势 | 上升/平稳/下降三分类 |
+| 健康度评分 | 售罄率 × 毛利率 双维度四象限 | 产品分级：爆款 / 畅销 / 一般 / 滞销 |
+| 趋势预测 | 线性回归拟合日销量趋势 | 上升 / 平稳 / 下降三分类 |
 | 智能补货 | 补货点 = 预测日销 × 提前期 + 安全库存 | 自动生成补货清单 |
-| 清仓策略 | 按渠道（天猫/京东/得物/抖音）差异化推荐 | 滞销品 → 最优清仓渠道匹配 |
+| 清仓策略 | 按渠道差异化推荐 | 滞销品 → 最优清仓渠道匹配 |
 
-📄 [查看 Notebook](项目四：产品组合分析/analysis.ipynb) · [分析报告](项目四：产品组合分析/产品组合分析报告.md)
+📄 [Notebook](项目四：产品组合分析/analysis.ipynb) · [分析报告](项目四：产品组合分析/产品组合分析报告.md) · [方案](项目四：产品组合分析/产品组合分析方案.md)
+
+🖼️ [静态看板](可视化/charts/项目四_产品组合分析.png)
 
 ---
 
@@ -93,10 +102,11 @@
 | 数据处理 | `pandas`, `numpy` | 数据清洗、透视、聚合、向量化计算 |
 | 统计分析 | `scipy.stats` | 卡方检验、双样本 z 检验 |
 | 机器学习 | `scikit-learn` | 多项式回归（边际 ROI）、线性回归（趋势预测） |
-| 可视化 | `matplotlib`, `seaborn` | 综合看板、漏斗图、热力图、四象限散点图 |
+| 静态可视化 | `matplotlib`, `seaborn` | 综合看板、漏斗图、热力图、四象限散点图 |
+| 交互看板 | `Dash` + `Plotly` | Web 交互式数据看板（`可视化/dashboard.py`） |
+| BI 工具 | Power BI Desktop | 企业级仪表板（`可视化/powerbi/项目可视化.pbix`） |
 | 数据库 | `SQLite3` / `pymysql` | 本地轻量开发 / 生产环境 MySQL |
-| 环境 | `Jupyter Notebook` | 交互式分析 + 图文并茂的报告输出 |
-| BI 工具 | PowerBI | 数据导出模块，支持 PowerBI 看板 |
+| 开发环境 | `Jupyter Notebook` | 交互式分析 + 图文并茂的报告输出 |
 
 ---
 
@@ -105,15 +115,15 @@
 ### 1. 克隆仓库
 
 ```bash
-git clone https://github.com/你的用户名/项目名.git
-cd 项目名
+git clone https://github.com/maheyun/dianwei_qingxi.git
+cd dianwei_qingxi
 ```
 
 ### 2. 安装依赖
 
 ```bash
 # 方式一：conda（推荐，自动处理 C 库依赖）
-conda install -c conda-forge numpy pandas matplotlib seaborn scipy scikit-learn pymysql cryptography python-docx jupyter
+conda install -c conda-forge numpy pandas matplotlib seaborn scipy scikit-learn pymysql cryptography python-docx jupyter dash plotly
 
 # 方式二：pip
 pip install -r requirements.txt
@@ -129,7 +139,23 @@ python company_scale_setup.py
 jupyter notebook
 ```
 
-### 4. （可选）切换到 MySQL
+### 4. 启动交互式 Web 看板
+
+```bash
+# 启动 Dash Web 看板（Plotly 交互图表）
+python 可视化/dashboard.py
+# 浏览器访问 http://127.0.0.1:8050
+```
+
+### 5. （可选）Power BI 看板
+
+```bash
+# 导出 Power BI 所需数据
+python 可视化/export_for_powerbi.py
+# 然后打开 可视化/powerbi/项目可视化.pbix（需 Power BI Desktop）
+```
+
+### 6. （可选）切换到 MySQL
 
 ```bash
 # 方式一：一键生成 MySQL 数据（推荐）
@@ -148,50 +174,85 @@ python migrate_to_mysql.py
 
 ```
 .
-├── README.md                          # 本文件
-├── requirements.txt                   # Python 依赖清单
-├── 学习指南.md                         # 详细学习指南（数据思维 + 面试要点）
-├── PowerBI看板指南.md                   # PowerBI 仪表板搭建指南
+├── README.md                           # 本文件
+├── requirements.txt                    # Python 依赖清单
+├── .gitignore
 │
-├── company_scale_setup.py             # 一键生成 4 个项目的 SQLite 数据
-├── mysql_setup.py                     # 一键生成 4 个项目的 MySQL 数据
-├── migrate_to_mysql.py                # SQLite → MySQL 数据迁移脚本
-├── export_for_powerbi.py              # 导出数据供 PowerBI 使用
+├── 📘 学习指南.md                       # 详细学习指南（数据思维 + 面试要点）
+├── 📘 面试指标速查表.md                  # 面试指标速查手册
+├── 📘 面试题全集.md                     # 22 道面试题及详细解答
+├── 📘 PowerBI看板指南.md                # Power BI 仪表板搭建指南
 │
-├── 项目一：公司日常运营指标分析/
-│   ├── analysis.ipynb                 # Jupyter Notebook 分析（支持 SQLite/MySQL 双模式）
-│   ├── analysis.py                    # 纯 Python 脚本版
-│   ├── ecommerce_ops.db               # SQLite 数据
-│   ├── 日常运营指标分析.png            # 综合可视化看板
-│   └── 日常运营指标分析报告.md          # 自动生成的分析报告
+├── 🔧 company_scale_setup.py           # 一键生成 4 个项目的 SQLite 数据
+├── 🔧 mysql_setup.py                   # 一键生成 4 个项目的 MySQL 数据
+├── 🔧 migrate_to_mysql.py              # SQLite → MySQL 数据迁移脚本
 │
-├── 项目二：老用户激活与价值提升/
+├── 📊 可视化/                           # ★ 所有可视化资源集中管理
+│   ├── dashboard.py                    # Dash Web 交互看板（Plotly）
+│   ├── export_for_powerbi.py           # Power BI 数据导出脚本
+│   ├── charts/                         # 静态分析图表（PNG）
+│   │   ├── 项目一_日常运营指标分析.png
+│   │   ├── 项目二_老用户激活与价值提升分析.png
+│   │   ├── 项目三_各平台ROI预算重新分配分析.png
+│   │   └── 项目四_产品组合分析.png
+│   ├── powerbi/                        # Power BI 资源
+│   │   ├── 项目可视化.pbix              # Power BI 完整看板文件
+│   │   └── data/                       # Power BI 源数据（CSV）
+│   │       ├── 项目一_日常运营/
+│   │       ├── 项目二_老用户激活/
+│   │       ├── 项目三_ROI预算/
+│   │       └── 项目四_产品组合/
+│   └── 演示视频/                        # 预留：项目演示视频
+│
+├── 📁 项目一：公司日常运营指标分析/
+│   ├── analysis.ipynb                  # Jupyter Notebook（SQLite/MySQL 双模式）
+│   ├── analysis.py                     # 纯 Python 脚本版
+│   ├── 复刻.ipynb                      # MySQL 连接复刻版
+│   ├── ecommerce_ops.db                # SQLite 数据库（~270MB）
+│   ├── 日常运营指标分析方案.md           # 项目方案
+│   └── 日常运营指标分析报告.md           # 分析报告
+│
+├── 📁 项目二：老用户激活与价值提升/
 │   ├── analysis.ipynb
 │   ├── analysis.py
-│   ├── user_activation.db
-│   ├── 老用户激活与价值提升分析.png
+│   ├── user_activation.db              # ~21MB
+│   ├── 老用户激活与价值提升方案.md
 │   └── 老用户激活与价值提升分析报告.md
 │
-├── 项目三：各平台ROI预算重新分配/
+├── 📁 项目三：各平台ROI预算重新分配/
 │   ├── analysis.ipynb
 │   ├── analysis.py
-│   ├── roi_allocation.db
-│   ├── 各平台ROI预算重新分配分析.png
+│   ├── roi_allocation.db               # ~455KB
+│   ├── 各平台ROI预算重新分配方案.md
 │   └── 各平台ROI预算重新分配分析报告.md
 │
-├── 项目四：产品组合分析/
+├── 📁 项目四：产品组合分析/
 │   ├── analysis.ipynb
 │   ├── analysis.py
-│   ├── product_portfolio.db
-│   ├── 产品组合分析.png
+│   ├── product_portfolio.db            # ~8MB
+│   ├── 产品组合分析方案.md
 │   └── 产品组合分析报告.md
 │
-└── powerbi_data/                      # PowerBI 导出的 CSV 数据
+├── 📝 MySQL面试题30道.sql              # 30 题合集（基础/聚合/JOIN/窗口/CTE/RFM-G）
+├── 📝 query/                           # 30 道独立 SQL 文件
+├── 📝 项目一sql数据查询.csv             # 项目一 PV/UV 示例数据导出
+│
+├── 📄 数据分析师-胡雅威-简历.docx        # 简历 Word 版
+├── 📄 数据分析师-胡雅威-简历.pdf         # 简历 PDF 版
+├── 📄 最新简历/                         # 简历最新版本
+│   ├── 数据分析师-胡雅威-简历.docx
+│   └── 数据分析师-胡雅威-简历.pdf
+│
+├── 🛠 extract_resume.py                # 简历文本提取工具
+├── 🛠 resume_text.txt                  # 简历纯文本提取结果
+├── 🛠 git更新指令                       # Git 常用指令速查
+│
+└── 📋 a.py / test_timestamp.db         # 测试/临时文件
 ```
 
 ---
 
-## 📊 分析逻辑关系
+## 📊 分析逻辑体系
 
 ```
 ┌──────────────────────────────────────────────────────────┐
@@ -216,6 +277,36 @@ python migrate_to_mysql.py
 │                                                           │
 └──────────────────────────────────────────────────────────┘
 ```
+
+---
+
+## 🖥️ 可视化体系
+
+本项目提供 **三层可视化** 满足不同场景：
+
+| 层级 | 工具 | 输出 | 适用场景 |
+|------|------|------|---------|
+| 静态图表 | `matplotlib` + `seaborn` | `可视化/charts/*.png` | 报告嵌入、快速预览 |
+| 交互看板 | `Dash` + `Plotly` | `python 可视化/dashboard.py` | 浏览器交互式探索 |
+| 企业 BI | Power BI Desktop | `可视化/powerbi/项目可视化.pbix` | 正式汇报、大屏展示 |
+
+---
+
+## 🗄️ SQL 面试题
+
+**30 道 MySQL 面试题**涵盖 7 大模块：
+
+| 模块 | 题量 | 考察点 |
+|------|------|--------|
+| 基础查询 | 6 | DISTINCT / WHERE / GROUP BY / BETWEEN / LIKE / IN |
+| 聚合与分组 | 6 | COUNT DISTINCT / HAVING / 窗口百分比 / 中位数 / 透视 |
+| 多表 JOIN | 6 | LEFT JOIN / 自连接 / 四表关联 / 反连接 / COALESCE |
+| 窗口函数 | 6 | ROW_NUMBER / 累计求和 / RANK / LEAD / 移动平均 |
+| 子查询与 CTE | 4 | 标量子查询 / NOT EXISTS / CTE 分层 / 多步 CTE |
+| 索引设计 | 1 | 复合索引策略 |
+| 综合实战 | 1 | RFM+G 五维用户分层（CTE + NTILE + CASE WHEN） |
+
+📄 [合集文件](MySQL面试题30道.sql) · [分题目录](query/)
 
 ---
 

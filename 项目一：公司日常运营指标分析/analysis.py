@@ -28,7 +28,7 @@ plt.rcParams["axes.unicode_minus"] = False
 
 DB_PATH = "ecommerce_ops.db"
 REPORT_PATH = "日常运营指标分析报告.md"
-CHART_PATH = "日常运营指标分析.png"
+CHART_PATH = "../可视化/charts/项目一_日常运营指标分析.png"
 
 # ── 辅助函数 ──────────────────────────────────────────────
 

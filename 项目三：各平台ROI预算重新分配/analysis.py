@@ -29,7 +29,7 @@ plt.rcParams["axes.unicode_minus"] = False
 
 DB_PATH = "roi_allocation.db"
 REPORT_PATH = "各平台ROI预算重新分配分析报告.md"
-CHART_PATH = "各平台ROI预算重新分配分析.png"
+CHART_PATH = "../可视化/charts/项目三_各平台ROI预算重新分配分析.png"
 
 
 def calculate_marginal_roi_regression(df):

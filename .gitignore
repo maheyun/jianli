@@ -18,8 +18,14 @@ extract_resume.py
 # IDE
 .vscode/
 
-# PowerBI 导出数据（由 export_for_powerbi.py 生成）
-powerbi_data/
+# PowerBI 导出数据（由 可视化/export_for_powerbi.py 生成）
+可视化/powerbi/data/
+
+# Power BI 看板文件（体积大 ~83MB）
+可视化/powerbi/*.pbix
+
+# Playwright MCP
+.playwright-mcp/
 
 # 系统文件
 .DS_Store
