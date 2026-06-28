@@ -182,14 +182,18 @@ python migrate_to_mysql.py
 ├── 📘 面试指标速查表.md                  # 面试指标速查手册
 ├── 📘 面试题全集.md                     # 22 道面试题及详细解答
 ├── 📘 PowerBI看板指南.md                # Power BI 仪表板搭建指南
+├── 📘 PowerBI三层诊断看板搭建指南.md     # Power BI 三层下钻看板完整指南（含 DAX）
+├── 📘 项目完整讲解稿.md                  # 面试项目陈述完整稿（含 Q&A 追问）
 │
 ├── 🔧 company_scale_setup.py           # 一键生成 4 个项目的 SQLite 数据
 ├── 🔧 mysql_setup.py                   # 一键生成 4 个项目的 MySQL 数据
 ├── 🔧 migrate_to_mysql.py              # SQLite → MySQL 数据迁移脚本
 │
 ├── 📊 可视化/                           # ★ 所有可视化资源集中管理
-│   ├── dashboard.py                    # Dash Web 交互看板（Plotly）
-│   ├── export_for_powerbi.py           # Power BI 数据导出脚本
+│   ├── dashboard_v4.py                 # Dash 三层诊断看板（驾驶舱→维度拆分→交叉归因）
+│   ├── dashboard_v3.py                 # Dash 精简版看板（备用）
+│   ├── dashboard.py                    # Dash Web 交互看板（原版四项目 Tab）
+│   ├── export_for_powerbi.py           # Power BI 数据导出（含三层看板专用 CSV）
 │   ├── charts/                         # 静态分析图表（PNG）
 │   │   ├── 项目一_日常运营指标分析.png
 │   │   ├── 项目二_老用户激活与价值提升分析.png
@@ -201,35 +205,36 @@ python migrate_to_mysql.py
 │   │       ├── 项目一_日常运营/
 │   │       ├── 项目二_老用户激活/
 │   │       ├── 项目三_ROI预算/
-│   │       └── 项目四_产品组合/
+│   │       ├── 项目四_产品组合/
+│   │       └── 统一驾驶舱/              # 三层诊断看板专用数据
 │   └── 演示视频/                        # 预留：项目演示视频
 │
 ├── 📁 项目一：公司日常运营指标分析/
 │   ├── analysis.ipynb                  # Jupyter Notebook（SQLite/MySQL 双模式）
 │   ├── analysis.py                     # 纯 Python 脚本版
 │   ├── 复刻.ipynb                      # MySQL 连接复刻版
-│   ├── ecommerce_ops.db                # SQLite 数据库（~270MB）
+│   ├── ecommerce_ops.db                # SQLite 数据库（~2.5GB，10×规模）
 │   ├── 日常运营指标分析方案.md           # 项目方案
 │   └── 日常运营指标分析报告.md           # 分析报告
 │
 ├── 📁 项目二：老用户激活与价值提升/
 │   ├── analysis.ipynb
 │   ├── analysis.py
-│   ├── user_activation.db              # ~21MB
+│   ├── user_activation.db              # ~200MB
 │   ├── 老用户激活与价值提升方案.md
 │   └── 老用户激活与价值提升分析报告.md
 │
 ├── 📁 项目三：各平台ROI预算重新分配/
 │   ├── analysis.ipynb
 │   ├── analysis.py
-│   ├── roi_allocation.db               # ~455KB
+│   ├── roi_allocation.db               # ~4MB
 │   ├── 各平台ROI预算重新分配方案.md
 │   └── 各平台ROI预算重新分配分析报告.md
 │
 ├── 📁 项目四：产品组合分析/
 │   ├── analysis.ipynb
 │   ├── analysis.py
-│   ├── product_portfolio.db            # ~8MB
+│   ├── product_portfolio.db            # ~75MB
 │   ├── 产品组合分析方案.md
 │   └── 产品组合分析报告.md
 │
@@ -287,8 +292,31 @@ python migrate_to_mysql.py
 | 层级 | 工具 | 输出 | 适用场景 |
 |------|------|------|---------|
 | 静态图表 | `matplotlib` + `seaborn` | `可视化/charts/*.png` | 报告嵌入、快速预览 |
-| 交互看板 | `Dash` + `Plotly` | `python 可视化/dashboard.py` | 浏览器交互式探索 |
+| 交互看板（三层下钻） | `Dash` + `Plotly` | `python 可视化/dashboard_v4.py` | 浏览器交互式三层诊断：驾驶舱 → 维度拆分 → 交叉归因 |
 | 企业 BI | Power BI Desktop | `可视化/powerbi/项目可视化.pbix` | 正式汇报、大屏展示 |
+
+### Dash 三层诊断看板（新增）
+
+```bash
+# 启动三层下钻诊断看板
+python 可视化/dashboard_v4.py
+# 浏览器访问 http://127.0.0.1:8054
+```
+
+**三层结构**：
+- **第一层「CEO 驾驶舱」**：6 大核心 KPI + GMV 趋势 + 平台 ROI + 产品四象限，异常自动标红
+- **第二层「维度拆分」**：点击任意 KPI → 按用户分层/渠道/品类拆分明细
+- **第三层「交叉归因」**：点击异常维度 → 品类×渠道交叉分析 + 根因判断 + 策略建议
+
+### Power BI 三层看板
+
+```bash
+# 导出 Power BI 所需数据（含三层诊断看板专用 CSV）
+python 可视化/export_for_powerbi.py
+
+# 然后打开 Power BI Desktop，按指南搭建
+# 详细步骤和 DAX 公式参考：PowerBI三层诊断看板搭建指南.md
+```
 
 ---
 
