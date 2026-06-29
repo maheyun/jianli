@@ -399,7 +399,7 @@ html = f"""<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>跃动体育 · 数据看板</title>
-<script src="https://cdn.plot.ly/plotly-3.2.4.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/plotly.js-dist@2.35.2/plotly.min.js"></script>
 <style>
 :root {{
     --bg: #1a1a2e; --card: #16213e; --border: #0f3460;
